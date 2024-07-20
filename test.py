@@ -49,10 +49,51 @@ else:
 # print(str1.upper())
 # print(str1)
 
-# split方法，strip方法
-str2 = '   app ppa '
-print(str2.split('a'))  # 分割函数
-print(str2.strip())  # 去除首尾空格
-print(str2.strip('a'))  # 去除首尾指定字符串
+# # split方法，strip方法
+# str2 = '   app ppa '
+# print(str2.split('a'))  # 分割函数
+# print(str2.strip())  # 去除首尾空格
+# print(str2.strip('a'))  # 去除首尾指定字符串
+# # 字符串占位符
+# print("字符串为:%s" % str2)
+
+# 占位符
+# str1 = 'score is %d' % 100
+# str2 = 'my name is %s' % 'cj'
+# str3 = 'a couple is %s' % [1, 2]
+# str4 = 'money is %.3f ' % 999.99
+# print(str1)
+# print(str2)
+# print(str3)
+# print(str4)
+
+# f表达式
+# name = 'haha'
+# age = '18'
+# sex = '男'
+# str1 = "大家好，我的名字是{0},今年{1}岁，性别{2}".format(name, age, sex)
+# print(str1)
+# str1 = f'大家好，我的名字是{name},今年{age}岁，性别{sex}'
+# print(str1)
+
+# format格式化输出
+# print("money is {1:.2f}".format(3.999, 2.9999))
+# print("money is {1:.2%}".format(3.999, 2.9999))
 
 
+# 列表
+# 定义列表
+# list1 = [2, 3, 4, 'www', [10, 20, 30]]
+# list2 = [2, 3, 4]
+# # 列表下标：从0开始
+# print(list1[4][2])  # 取列表中嵌套的列表的数据
+# # 列表长度：
+# print(len(list1))
+# # 列表更新值,重新赋值
+# list1[2] = 'new'
+# print(list1 + list2)
+# print(list1 * 2)
+# print(list1[0:4:2])
+# list1.append([1, 2, 3])
+# print(list1)
+# print(list1.index('aa'))
