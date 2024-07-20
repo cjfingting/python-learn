@@ -97,3 +97,56 @@ else:
 # list1.append([1, 2, 3])
 # print(list1)
 # print(list1.index('aa'))
+
+# 元组操作
+# a = set('1234')
+# b = set([10, 20, 30])
+# c = set((1,2,3,4))
+# print(a)
+# print(b)
+# print(c)
+# d = {
+#     "年龄":18,
+#     "名字":"cj"
+# }
+# f = set(d)
+# print(f)
+
+# 强制类型转化
+# a = 123
+# print(str(a))
+# b = True
+# print(str(b))
+# c = [1, 2, 3]
+# print(str(c))
+# d = {1, 2, 3}
+# print(str(d))
+
+# print(float("2"))
+# print(type(float("2.22")))
+
+
+# d = {
+#     "姓名": 'cj',
+#     "年龄": 18,
+#     1: 2,
+#     (1, 2, 3):'123',
+#     "技能": {
+#          "技能1": 'python',
+#          "技能2": 'java'
+#     }
+# }
+# print(d.items())
+# print(d.values())
+
+# for i in range(10):
+#     print(i)
+
+# 提取a中的列表中的元素值
+a = (1, 2, 3, [10, 20, 30], ['w', 'y', 'z'])
+print(a)
+for i in a:
+    if isinstance(i, list):
+         for j in i:
+            print(j)
+
