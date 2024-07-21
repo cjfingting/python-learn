@@ -13,6 +13,8 @@ elif money > 400:
 else:
     print("not enough")
 """
+
+
 # 循环语句 python代码的判断仅仅根据你代码放的位置
 # i = 1
 # s = 0
@@ -143,10 +145,85 @@ else:
 #     print(i)
 
 # 提取a中的列表中的元素值
-a = (1, 2, 3, [10, 20, 30], ['w', 'y', 'z'])
-print(a)
-for i in a:
-    if isinstance(i, list):
-         for j in i:
-            print(j)
+# a = (1, 2, 3, [10, 20, 30], ['w', 'y', 'z'])
+# print(a)
+# for i in a:
+#     if isinstance(i, list):
+#          for j in i:
+#             print(j)
 
+# 函数
+# def s(a, b):
+#     print(a + b)
+#
+#
+# s(1, 2)
+# s('你好','世界')
+
+# 将集合定义在主函数中就能实现保存机制了
+# def abc(a, b):
+#      b.add(a)
+#
+#
+# b = set()
+# abc(100,b)  # [100]
+# print(b)
+# abc(200, b)  # [100,200]
+# print(b)
+
+
+# def abc(a,*args):
+#     print(a)
+#     print(args)
+#
+#
+# abc(100,200,300,400,500)
+
+# def abc(a,**kwargs):
+#     print(a)
+#     print(kwargs)
+#
+#
+# abc(1,x = 100,y = 200,z = 300,m = 400)
+
+# def abc(a,b,c):
+#     print(a)
+#     print(b)
+#     print(c)
+
+
+# abc(*'123')
+#
+# d = {  # x,y要与函数的参数x，y名字一样才能用**d
+#     "x": 'cj',
+#     "y": 18
+# }
+
+
+# def xy(x, y):
+#     print(x)
+#     print(y)
+#
+#
+# def ss(**kwargs):
+#     print(kwargs)
+#
+#
+# # xy(*d)
+# # xy(**d)
+# ss(**d)
+
+
+# x, y, z = (10, 20, 30)
+# print(x)
+# print(y)
+
+
+def abc():
+    def xyz():
+        return [1, 2, 3]
+
+    return xyz()  # 返回一个函数出去
+
+s = abc()
+print(s)
