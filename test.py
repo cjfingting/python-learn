@@ -219,11 +219,13 @@ else:
 # print(y)
 
 
-def abc():
-    def xyz():
-        return [1, 2, 3]
+# def abc():
+#     def xyz():
+#         return [1, 2, 3]
+#
+#     return xyz()  # 返回一个函数出去
 
-    return xyz()  # 返回一个函数出去
-
-s = abc()
+# from use_numpy import abc
+import use_numpy
+s = use_numpy.abc()
 print(s)

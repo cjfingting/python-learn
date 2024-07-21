@@ -493,7 +493,9 @@ def abc():
     return xyz   # 返回一个函数出去
     return xyz()  # 返回内层函数的执行结果
 
-
+一个文件里的函数使用另一个文件里的函数：
+from 文件 import 方法 导入特定的方法 然后使用方法名即可
+import 文件          导入整个文件   然后使用文件名.方法名
 cmd命令窗口使用:  主要用于linux环境
 安装ipython
 pip install ipython

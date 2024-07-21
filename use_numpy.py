@@ -5,15 +5,17 @@
 #         数据的字节顺序
 # bool b,int,intc,intp,int8 i4,int16 i2,int32 i3 ,int64 i4 ,uint8 u1, uint16 u2,uint32 u3 unit64 u4(无符号整数)
 # float f1,float16 f2,float32 f3,float64 f4
+import random
+
 import numpy as np
 
 dt = np.dtype('i4')
 # 自定义一个数据类型
 student = np.dtype([("name", "S20"), ("age", 'u4'), ("mark", 'f4')])
-print(student)
-print(type(student))
-print(dt)
-print(type(dt))
+# print(student)
+# print(type(student))
+# print(dt)
+# print(type(dt))
 
 # 创建Ndarray数组对象
 # 方法一：
@@ -113,3 +115,26 @@ arr = np.logspace(1, 10, 10, dtype='i4', base=2)
 # print(arr)
 
 # 方法十三
+# random.rand(x,y,z) 生成x行y列z维的[0,1)的随机数(x，y，z都可省略)
+arr = np.random.rand(3,2,3)
+# print(arr)
+
+# 方法十四
+# random.random(x) 生成x个的[0,1)的随机数(x可省略)
+arr = np.random.rand(3)
+
+# 方法十五
+# random.randint(low,high,size=None,dtype=‘i') low 包含的下限，high 不包含的上限 size 元素个数,默认为1
+arr = np.random.randint(1,10)
+# print(arr)
+
+# 方法十六
+# random.randn(x,y,z)  返回生成x行y列z维满足正态分布的随机数(x，y，z都可省略)
+arr = np.random.rand(3,2,3)
+# print(arr)
+
+# 方法十七
+# random.normal(loc-0.0,scale=1.0,size=None) 生成高斯分布的概率密度的随机数
+# loc 浮点型 概率分布的均值 scale 浮点型，概率分布的标准差 size 输出的个数，默认一个
+arr = np.random.normal(1.0,1.0,5)
+print(arr)
