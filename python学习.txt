@@ -492,3 +492,38 @@ def abc():
         return [1,2,3]
     return xyz   # 返回一个函数出去
     return xyz()  # 返回内层函数的执行结果
+
+
+cmd命令窗口使用:  主要用于linux环境
+安装ipython
+pip install ipython
+ipython # 进入ipython环境
+exit    #退出环境
+Tab自动补全
+?内省：变量/方法?   ->  即可查看相关方法或变量信息
+Ctrl + C 终止当前执行
+Ctrl + A 光标移动到行首
+Ctrl + E 光标移动到行尾
+Ctrl + K 删除光标开始到行尾的文本
+Ctrl + U 删除光标开始到行首的文本
+Ctrl + L 清屏
+
+魔术命令
+%run  路径  执行python文件
+%timeit method [代码主体]测量代码运行时间
+-r 控制循环次数，-n命令单次循环中执行的次数
+%paste  粘贴代码到ipython中
+%cpaste 分步粘贴代码，Ctrl+D 结束粘贴
+%xdel 变量名  删除变量
+%reset 删除当前空间中所有变量
+%pylab Numpy和Matplotlib的科学计算功能生效
+%logstart [logname[logmodel]] 开启日志 日志路径，日志模式(over 覆盖 append 追加)
+%magic  展示魔术命令的详细文档
+
+执行shell命令
+!shell命令
+
+网页编程python:jupyter  用不了
+jupyter notebook
+
+Anaconda 包管理程序，可直接替换掉python编译软件
