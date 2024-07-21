@@ -3,13 +3,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-x=np.arange(0,2*np.pi,0.01)
-y=np.sin(x)
-
-plt.plot(x,y)
-plt.show()
-
-#%%
-y1=np.cos(x)
-plt.plot(x,y1)
+plt.plot([1,2,3,4,5,6,7,8,9,10])
+plt.savefig('test2.jpg')
 plt.show()
