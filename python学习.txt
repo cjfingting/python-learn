@@ -527,3 +527,18 @@ Ctrl + L 清屏
 jupyter notebook
 
 Anaconda 包管理程序，可直接替换掉python编译软件
+conda install numpy   安装包
+
+Numpy SciPy Matplotlib  用于数据分析和机器学习
+
+ndarray对象：
+    1，一个指向数据的指针
+    2.数据类型或dtype
+    3.表示数组形状的元组
+    4.一个跨度元组
+
+numpy数据类型：
+bool,int,intc,intp,int8,int16,int32,int64,uint8,uint8,uint16,uint32(无符号整数)
+float,float16,float32,float64
+
+dtype数据类型对象:描述与数组对应的内存区域如何使用
