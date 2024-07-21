@@ -23,28 +23,28 @@ print(type(dt))
 # 想用元组作为元素，则dtype = object，python对象，不然无法识别 如arr3
 # 一维数组
 arr = np.array([1, 2, 3, 4, 5])
-print(arr)
-print(type(arr))
+# print(arr)
+# print(type(arr))
 
 # 元素类型要相同
 arr = np.array([1, 2, 2.5, 4])
-print(arr)
+# print(arr)
 
 # 创建多维数组
 arr1 = np.array([[1, 2, 3], [4, 5, 6]])
-print(arr1)
+# print(arr1)
 
 # 规定最小维度
 arr2 = np.array([1, 2, 3, 4, 5, 6], ndmin=2)
-print(arr2)
+# print(arr2)
 
 # dtype参数规定数据类型
 arr3 = np.array([(1, 2), {3, 4, 5, 6}], dtype=object)
-print(arr3)
+# print(arr3)
 
 # 结构话数据类型
 arr4 = np.array([('cj', 18, 32), ('gg', 20, 45)], dtype=student)
-print(arr4)
+# print(arr4)
 
 # 方法二
 # asarray(a,dtype,order)函数
@@ -55,9 +55,61 @@ print(arr4)
 # asarray()创建对象
 arr = np.asarray((1, 2, 3, 4))
 arr1 = np.asarray([1, 2, 3, 4, 5])
-arr2 = np.asarray([(1, 2, 3), (1, 2)],dtype=object)
+arr2 = np.asarray([(1, 2, 3), (1, 2)], dtype=object)
 
 # 方法三
 # empty(shape,dtype,order)函数
 # shape 数组形状 其他同上
-arr = np.empty([3,2],dtype = int) # 创建一个3行2列，未初始化的数组
+arr = np.empty([3, 2], dtype=int)  # 创建一个3行2列，未初始化的数组(数值不固定)
+
+# 方法四
+# zeros(shape,dtype,order)函数 创建指定大小的数组，数组元素用0填充
+arr = np.zeros(5, dtype=[('x', 'i4'), ('y', 'S20')])  # 创建一个1行5列的全是0的数组
+# print(arr)
+
+# 方法五
+# ones(shape,dtype,order)函数 创建指定大小的数组，数组元素用1来填充
+arr = np.ones([3, 2], dtype='i4')  # 创建一个3行2列全是1的数组
+
+# 方法六
+# full(shape,fill_value,dtype,order)  创建指定大小的数组，数组元素用fill_value来填充
+arr = np.full([3, 2], 10, dtype='S')  # 创建一个3行2列全是10的数组
+# print(arr)
+
+# 方法七
+# eye(N,M,k=0,dtype,order) N 行向量 M 列向量，默认等于行向量 创建一个对角线为1，其他全是0的数组
+arr = np.eye(10, dtype='i4')  # 创建一个10行10列的对角线元素为1，其他全是0的一维数组
+
+# 方法八
+# arange(start,stop,step,dtype)函数 start 起始值，默认为0，stop 终止值（不包含） step 步长 默认为1
+arr = np.arange(stop=10, step=2)  # 创建一个起始值为1，终止值为10，步长为2的一维数组
+# print(arr)
+
+# 方法九
+# frombuffer(buffer,dtype,count,offset)函数 接受buffer输入参数，流的形式转化为ndarray对象
+# buffer 任意对象 count 读取的数据量，默认全部 offset 读取的起始位置，默认为0
+# 如果输入字符串则要在输入的字符串前加一个b
+s = b'cj is a good man'
+arr = np.frombuffer(s, dtype='S1')
+# print(arr)
+
+# 方法十
+# fromiter(iterable,dtype,count) iterable 可迭代对象 dtype必须指定，没有默认值
+x = [1, 2, 3, 4]
+z = iter(x)  # 转化为一个可迭代对象
+arr = np.fromiter(z, dtype='f')
+# print(arr)
+
+# 方法十一
+# linspace(start,stop,num=50,endpoint=True,retstep=False,dtype=None) 创建一个一维数组，由等差数列构成
+# start 序列起始值 stop 序列终止值，当endpoint为真，则包含此值 num 样本数量，默认50 retstep为真，数组会显示间距
+arr = np.linspace(1, 10, 10, dtype='i1')
+# print(arr)
+
+# 方法十二
+# logspace(start,stop,num=50,endpoint=True,base=10,dtype=None)
+# 序列起始值 base*start 序列终止值 base*stop 当endpoint为真，则包含此值 num 样本数量，默认50 base 对数log的底数，默认是10
+arr = np.logspace(1, 10, 10, dtype='i4', base=2)
+# print(arr)
+
+# 方法十三
