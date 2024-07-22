@@ -5,7 +5,7 @@
 #         数据的字节顺序
 # bool b,int,intc,intp,int8 i4,int16 i2,int32 i3 ,int64 i4 ,uint8 u1, uint16 u2,uint32 u3 unit64 u4(无符号整数)
 # float f1,float16 f2,float32 f3,float64 f4
-import random
+# import random
 
 import numpy as np
 
@@ -138,3 +138,5 @@ arr = np.random.rand(3,2,3)
 # loc 浮点型 概率分布的均值 scale 浮点型，概率分布的标准差 size 输出的个数，默认一个
 arr = np.random.normal(1.0,1.0,5)
 print(arr)
+
+
