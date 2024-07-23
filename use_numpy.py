@@ -7,6 +7,8 @@
 # float f1,float16 f2,float32 f3,float64 f4
 # import random
 
+# numpy.tile(数组,reps)
+# 在一个平面上将此数组平铺开来（数字对应一维，元组对应二维 tuple（纵铺个数，横铺个数）
 import numpy as np
 
 dt = np.dtype('i4')
