@@ -28,15 +28,15 @@ b = a.reshape(2, 4, 3)  # b 现在拥有三个维度
 # arr2 = arr[2:] # 从下标为2切片到最后
 # arr3 = arr[2:9]  # 切片arr[2,9)
 arr = np.arange(15)
-arr.shape = (5,3)
+arr.shape = (5, 3)
 # print(arr)
 arr1 = arr[2:4]
 # print(arr1)
 # ...号代表取当前维度的所有数据，先取出所有数据，然后对另一个维度的数据进行条件取出
-arr[...,1]   # 取所有行，取1列
-arr[1,...]   # 取所有列，取1行
-arr[1:3,...] # 取所有列，取1:3行
-arr[...,1:3] # 取所有行，取1:3列
+arr[..., 1]  # 取所有行，取1列
+arr[1, ...]  # 取所有列，取1行
+arr[1:3, ...]  # 取所有列，取1:3行
+arr[..., 1:3]  # 取所有行，取1:3列
 # print(arr)
 # print(arr[1,2])  # 取1行2列那个数，就跟正常数组逻辑是一样的
 # print(arr[1:,1:]) # 取[1,5),[1,3)的数组
@@ -418,3 +418,187 @@ arr[...,1:3] # 取所有行，取1:3列
 # d = np.vstack((a, b))
 # print(d)
 # print('\n')
+
+# numpy.split(arr,indices_or_sections,axis=0)
+# indices_or_sections是一个整数，就用该数平均切分，如果是一个数组，为沿轴切分的位置 (必须参数)
+# 沿着哪个维度进行切分，默认为0，横向切分，为1时，纵向切分,这个参数只在多维数组有用
+# import numpy as np
+#
+# a = np.arange(9)
+#
+# print('第一个数组：')
+# print(a)
+# print('\n')
+#
+# print('将数组分为三个大小相等的子数组：')
+# b = np.split(a, 3)
+# print(b)
+# print('\n')
+#
+# print('将数组在一维数组中表明的位置分割：')
+# b = np.split(a, [4, 7])  # 下标为4和7的地方切两刀
+# print(b)
+
+# hsplit() 用于水平分割数组，通过指定要返回的相同形状的数组数量来拆分原数组，相当于上述的axis=1
+# import numpy as np
+#
+# harr = np.floor(10 * np.random.random((2, 6)))
+# print('原array：')
+# print(harr)
+#
+# print('拆分后：')
+# print(np.hsplit(harr, 3))
+
+# vsplit() 沿着垂直轴分割，其分割方式与hsplit用法相同,相当于上述的axis=0
+
+# 数组元素的添加与删除
+# resize(arr,shape) shape：返回数组的新形状
+# 函数返回指定大小的新数组
+# 如果新数组大小大于原始大小，则包含原始数组中的元素的副本,就是把元素疯狂重用
+# import numpy as np
+#
+# a = np.array([[1, 2, 3], [4, 5, 6]])
+#
+# print('第一个数组：')
+# print(a)
+# print('\n')
+#
+# print('第一个数组的形状：')
+# print(a.shape)
+# print('\n')
+# b = np.resize(a, (3, 2))
+#
+# print('第二个数组：')
+# print(b)
+# print('\n')
+#
+# print('第二个数组的形状：')
+# print(b.shape)
+# print('\n')
+# # 要注意 a 的第一行在 b 中重复出现，因为尺寸变大了
+#
+# print('修改第二个数组的大小：')
+# b = np.resize(a, (3, 4))
+# print(b)
+
+# numpy.append(arr,value,axis=None) 返回一个新数组
+# value 要想arr添加的值，需要和arr形状相同，输入数组的维度必须匹配 (追加数组)
+# axis 默认为 None。当axis无定义时，是横向加成，返回总是为一维数组！则上述value值随便输入
+# 当axis有定义的时候，分别为0和1的时候。当axis为0时,数组时加在下边（列数要相同）。
+# 当axis为1时，数组是加在右边（行数要相同）
+# import numpy as np
+#
+# a = np.array([[1, 2, 3], [4, 5, 6]])
+#
+# print('第一个数组：')
+# print(a)
+# print('\n')
+#
+# print('向数组添加元素：')
+# print(np.append(a, 7))
+# print('\n')
+#
+# print('向数组添加元素：')
+# print(np.append(a, [7, 8, 9]))
+# print('\n')
+#
+# print('沿轴 0 添加元素：')
+# print(np.append(a, [[7, 8, 9]], axis=0))
+# print('\n')
+#
+# print('沿轴 1 添加元素：')
+# print(np.append(a, [[5, 5], [7, 8]], axis=1))    #  将前一个元素作为一行而不是一列
+
+# numpy.insert(arr,obj,value,axis) 在给定索引之前，沿给定轴在输入数组中插入值
+# arr：输入数组
+# obj：在其之前插入值的索引
+# values：要插入的值 可插入多个值，用数组包起来
+# axis：沿着它插入的轴，如果未提供，则输入数组会被展开 0 表示行 1 表示列
+# import numpy as np
+#
+# a = np.array([[1, 2], [3, 4], [5, 6]])
+#
+# print('第一个数组：')
+# print(a)
+# print('\n')
+#
+# print('未传递 Axis 参数。 在删除之前输入数组会被展开。')
+# print(np.insert(a, 3, [11, 12]))
+# print('\n')
+# print('传递了 Axis 参数。 会广播值数组来配输入数组。')
+#
+# print('沿轴 0 广播：')
+# print(np.insert(a, 1, [11], axis=0))
+# print('\n')
+#
+# print('沿轴 1 广播：')
+# print(np.insert(a, 1, [[11], [12]], axis=1)) # 最外面的中括号表示数组，一个中括号表示一行，中括号里面表示元素
+
+# numpy.delete(arr,obj,axis) 不会改变原数组
+# arr：输入数组
+# obj：可以被切片，整数或者整数数组，表明要从输入数组删除的子数组
+# axis：沿着它删除给定子数组的轴，如果未提供，则输入数组会被展开 0 表示行 1 表示列
+# import numpy as np
+#
+# a = np.arange(12).reshape(3, 4)
+#
+# print('第一个数组：')
+# print(a)
+# print('\n')
+#
+# print('未传递 Axis 参数。 在插入之前输入数组会被展开。')
+# print(np.delete(a, 5))
+# print('\n')
+#
+# print('删除第二列：')
+# print(np.delete(a, 1, axis=1))
+# print('\n')
+#
+# print('包含从数组中删除的替代值的切片：')
+# a = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+# print(np.delete(a, np.s_[::2]))
+
+# numpy.unique(arr,return_index,return_inverse,return_counts)
+# arr：输入数组，如果不是一维数组则会展开
+# return_index：如果为true，返回新列表元素在旧列表中的位置（下标），并以列表形式储
+# return_inverse：如果为true，返回旧列表元素在新列表中的位置（下标），并以列表形式储
+# return_counts：如果为true，返回去重数组中的元素在原数组中的出现次数
+# import numpy as np
+#
+# a = np.array([5, 2, 6, 2, 7, 5, 6, 8, 2, 9])
+#
+# print('第一个数组：')
+# print(a)
+# print('\n')
+#
+# print('第一个数组的去重值：')
+# u = np.unique(a)
+# print(u)
+# print('\n')
+#
+# print('去重数组的索引数组：')
+# u, indices = np.unique(a, return_index=True)
+# print(indices)
+# print('\n')
+#
+# print('我们可以看到每个和原数组下标对应的数值：')
+# print(a)
+# print('\n')
+#
+# print('去重数组的下标：')
+# u, indices = np.unique(a, return_inverse=True)
+# print(u)
+# print('\n')
+#
+# print('下标为：')
+# print(indices)
+# print('\n')
+#
+# print('使用下标重构原数组：')
+# print(u[indices])
+# print('\n')
+#
+# print('返回去重元素的重复数量：')
+# u, indices = np.unique(a, return_counts=True)
+# print(u)
+# print(indices)
