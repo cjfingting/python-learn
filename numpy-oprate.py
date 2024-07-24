@@ -112,13 +112,13 @@ arr[...,1:3] # 取所有行，取1:3列
 # op_flags 可选参数，权限控制 read-only 只读 readwrite 读写 writeonly 只写
 # flags 可选参数  c_index	可以跟踪 C 顺序的索引 f_index	可以跟踪 Fortran 顺序的索引 multi_index	每次迭代可以跟踪一种索引类型 external_loop	给出的值是具有多个值的一维数组，而不是零维数组
 
-import numpy as np
-a = np.arange(0,60,5)
-a = a.reshape(3,4)
-print ('原始数组是：')
-print (a)
-print ('\n')
-print ('修改后的数组是：')
+# import numpy as np
+# a = np.arange(0,60,5)
+# a = a.reshape(3,4)
+# print ('原始数组是：')
+# print (a)
+# print ('\n')
+# print ('修改后的数组是：')
 # for x in np.nditer(a):
 #     print(x, end=", ")  # end表示在后面加啥
 # print('\n')
@@ -220,4 +220,201 @@ print ('修改后的数组是：')
 # print('以 F 风格顺序调用 ravel 函数之后：')
 # print(a.ravel(order='F'))
 
+# 翻转数组
+# transpose(数组,axes=None)  axes对应维度,通畅所有维度都会对换，即数组转置
+
+# a = np.arange(12).reshape(3, 4)
 #
+# print('原数组：')
+# print(a)
+# print('\n')
+#
+# print('对换数组：')
+# print(np.transpose(a))
+
+# ndarray.T 数组转置
+# import numpy as np
+#
+# a = np.arange(12).reshape(3, 4)
+#
+# print('原数组：')
+# print(a)
+# print('\n')
+#
+# print('转置数组：')
+# print(a.T)
+
+# numpy.rollaxis(a,axis,start=0) axis 要向后滚动的轴，其他轴的相对位置不会改变 start 默认为0，表示完整的滚动
+# 就是轴axis替换start位置，对应的位置向后移 axis > start
+# import numpy as np
+# a = np.arange(24).reshape(4,2,3)  # 3为深度，即二维数组的数量，2,3为行列
+# print(a)
+# print(np.rollaxis(a,2))  # 从深度转化则要跨维度找数，组成后面的m行n列
+# print(np.rollaxis(a,2,1)) # 从后面转化，则就是数组转置
+
+# swapaxes(a,axis1,axis2) 交换数组的两个轴
+# print((np.swapaxes(a,2,0)))
+
+# 修改数组维度
+# # broadcast(x,y) 它返回一个对象，该对象封装了将一个数组广播到另一个数组的结果,对y广播x
+# import numpy as np
+#
+# x = np.array([[1], [2], [3]])
+# y = np.array([4, 5, 6])
+#
+# # 对 y 广播 x 即将y变成x的维度
+# b = np.broadcast(x, y)
+# # 它拥有 iterator 属性，基于自身组件的迭代器元组
+#
+# print('对 y 广播 x：')
+# r, c = b.iters
+#
+# # Python3.x 为 next(context) ，Python2.x 为 context.next()
+# print(next(r), next(c))
+# print(next(r), next(c))
+# print('\n')
+# # shape 属性返回广播对象的形状
+#
+# print('广播对象的形状：')
+# print(b.shape)
+# print('\n')
+# # 手动使用 broadcast 将 x 与 y 相加
+# b = np.broadcast(x, y)
+# c = np.empty(b.shape)
+#
+# print('手动使用 broadcast 将 x 与 y 相加：')
+# print(c.shape)
+# print('\n')
+#
+# print('x 与 y 的和：')
+# print(x + y)
+
+# broadcast_to(array,shape,subok=False) 返回一个只读视图，shape要满足广播规则，即列不能改变
+# import numpy as np
+#
+# a = np.arange(4).reshape(1, 4)
+#
+# print('原数组：')
+# print(a)
+# print('\n')
+#
+# print('调用 broadcast_to 函数之后：')
+# print(np.broadcast_to(a, (4, 4)))
+
+# expand_dims(arr,axis=None) 通过在指定位置插入新的轴来扩展数组形状,插入轴其实就是增加维度，shape对应的位置(深度，高度，宽度)
+# import numpy as np
+#
+# x = np.array(([1, 2], [3, 4]))
+#
+# print('数组 x：')
+# print(x)
+# print('\n')
+# y = np.expand_dims(x, axis=0)  （2,2) -> (1,2,2)
+#
+# print('数组 y：')
+# print(y)
+# print('\n')
+#
+# print('数组 x 和 y 的形状：')
+# print(x.shape, y.shape)
+# print('\n')
+# # 在位置 1 插入轴
+# y = np.expand_dims(x, axis=1)
+#
+# print('在位置 1 插入轴之后的数组 y：')
+# print(y)
+# print('\n')
+#
+# print('x.ndim 和 y.ndim：')
+# print(x.ndim, y.ndim)
+# print('\n')
+#
+# print('x.shape 和 y.shape：') (2,2) -> (2,1,2)
+# print(x.shape, y.shape)
+
+# squeeze(arr,axis) 从给定数组的形状中删除一堆的条目 axis 删除轴的位置 只能删除值为1的轴的位置，不然不是报错就是无作用
+# 纯就是降维度的作用
+# import numpy as np
+#
+# x = np.arange(9).reshape(3, 1, 3)
+#
+# print('数组 x：')
+# print(x)
+# print('\n')
+# y = np.squeeze(x,1)
+# print('数组 y：')
+# print(y)
+# print('\n')
+#
+# print('数组 x 和 y 的形状：')
+# print(x.shape, y.shape)
+
+# 连接数组
+# concatenate((a1,a2,a3...),axis) 用于沿指定轴连接相同形状的两个或多个数组
+# a1,a2,a3...相同类型的数组 axis 沿着它连接数组的轴
+# import numpy as np
+#
+# a = np.array([[1, 2], [3, 4]])
+#
+# print('第一个数组：')
+# print(a)
+# print('\n')
+# b = np.array([[5, 6], [7, 8]])
+#
+# print('第二个数组：')
+# print(b)
+# print('\n')
+# # 两个数组的维度相同
+#
+# print('沿轴 0 连接两个数组：')
+# print(np.concatenate((a, b)))
+# print('\n')
+#
+# print('沿轴 1 连接两个数组：')
+# print(np.concatenate((a, b), axis=1))
+
+# stack((arr1,arr2..),axis) axis 返回数组中的轴，输入数组沿着它来堆叠 主要目的就是升维度
+# import numpy as np
+#
+# a = np.array([[1, 2], [3, 4]])
+#
+# print('第一个数组：')
+# print(a)
+# print('\n')
+# b = np.array([[5, 6], [7, 8]])
+#
+# print('第二个数组：')
+# print(b)
+# print('\n')
+#
+# print('沿轴 0 堆叠两个数组：')
+# print(np.stack((a, b), 0))
+# print('\n')
+#
+# print('沿轴 1 堆叠两个数组：')
+# print(np.stack((a, b), 1))
+
+# hstack((arr1,arr2..))通过水平堆叠来生成数组,不升维度
+# vstack((arr1,arr2..))通过竖直堆叠来生成数组,不升维度
+# import numpy as np
+#
+# a = np.array([[1, 2], [3, 4]])
+#
+# print('第一个数组：')
+# print(a)
+# print('\n')
+# b = np.array([[5, 6], [7, 8]])
+#
+# print('第二个数组：')
+# print(b)
+# print('\n')
+#
+# print('水平堆叠：')
+# c = np.hstack((a, b))
+# print(c)
+# print('\n')
+#
+# print('垂直堆叠：')
+# d = np.vstack((a, b))
+# print(d)
+# print('\n')
