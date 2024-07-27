@@ -70,7 +70,7 @@
 
 # 数学函数
 # 1.三角函数:np.sin(),np.cos(),np.tan()
-import numpy as np
+# import numpy as np
 
 # a = np.array([0, 30, 45, 60, 90])
 # print('不同角度的正弦值：')
@@ -457,7 +457,7 @@ import numpy as np
 # numpy.where() 函数返回输入数组中满足给定条件的元素的索引。
 # import numpy as np
 #
-# x = np.arange(9.).reshape(3, 3)
+# x = np.arrange(9.).reshape(3, 3)
 # print('我们的数组是：')
 # print(x)
 # print('大于 3 的元素的索引：')
@@ -467,14 +467,14 @@ import numpy as np
 # print(x[y])
 
 # numpy.extract(条件,数组) 函数根据某个条件从数组中抽取元素，返回满条件的元素。
-# import numpy as np
-#
-# x = np.arange(9.).reshape(3, 3)
-# print('我们的数组是：')
-# print(x)
-# # 定义条件, 选择偶数元素
-# condition = np.mod(x, 2) == 0
-# print('按元素的条件值：')
-# print(condition)
-# print('使用条件提取元素：')
-# print(np.extract(condition, x))  # 默认会展开
+import numpy as np
+
+x = np.arange(9.).reshape(3, 3)
+print('我们的数组是：')
+print(x)
+# 定义条件, 选择偶数元素
+condition = np.mod(x, 2) == 0
+print('按元素的条件值：')
+print(condition)
+print('使用条件提取元素：')
+print(np.extract(condition, x))  # 默认展开
