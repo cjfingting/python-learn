@@ -48,3 +48,6 @@
 # 'y'	黄色
 # 'k'	黑色
 # 'w'	白色
+
+# savefig('路径’,dpi,facecolor)  dpi 图像分辨率  facecolor 背景颜色，默认为'w'白色
+
