@@ -1,72 +1,38 @@
-# 1.条形图
-# 垂直条形图 ax.bar(x,height,width=0.8,bottom=None,align='center',color)
-# x 条形的x坐标的标量序列
-# height 标量或标量序列表示条的高度
-# width 标量或类似数组，可选
-# bottom 标量或类似数组 y轴最小值 可选
-# align center/edge 可选
-# color 颜色
-import numpy as np
+# 直方图
+# matplotlib.pyplot.hist(x, bins=None, range=None, density=False, weights=None, cumulative=False, bottom=None,
+# histtype='bar', align='mid',orientation='vertical', rwidth=None, log=False, color=None, label=None, stacked=False, **kwargs)
+# x：表示要绘制直方图的数据，可以是一个一维数组或列表。
+# bins：可选参数，表示直方图的箱数(分成几组)。默认为10。 重要参数
+# range：可选参数，表示直方图的值域范围，可以是一个二元组或列表。默认为None，即使用数据中的最小值和最大值。
+# density：可选参数，表示是否将直方图归一化。默认为False，即直方图的高度为每个箱子内的样本数，而不是频率或概率密度。
+# weights：可选参数，表示每个数据点的权重。默认为None。
+# cumulative：可选参数，表示是否绘制累积分布图。默认为False。 后一个为前一个+当前值
+# bottom：可选参数，表示直方图的起始高度。默认为None。
+# histtype：可选参数，表示直方图的类型，可以是'bar'、'barstacked'、'step'、'stepfilled'等。默认为'bar'。
+# align：可选参数，表示直方图箱子的对齐方式，可以是'left'、'mid'、'right'。默认为'mid'。
+# orientation：可选参数，表示直方图的方向，可以是'vertical'、'horizontal'。默认为'vertical'。
+# rwidth：可选参数，表示每个箱子的宽度。默认为None。
+# log：可选参数，表示是否在y轴上使用对数刻度。默认为False。
+# color：可选参数，表示直方图的颜色。
+# label：可选参数，表示直方图的标签。
+# stacked：可选参数，表示是否堆叠不同的直方图。默认为False。
+# **kwargs：可选参数，表示其他绘图参数。
 import matplotlib.pyplot as plt
+import numpy as np
+
+# 生成一组随机数据
 fig = plt.figure()
-# ax = fig.add_axes((0.1, 0.1, 0.8, 0.8))
-# langs = ['C', 'C++', 'Python', 'Java']
-# student = [22, 33, 44, 55]
-# ax.bar(langs, student,0.5, align='center',color='r')
-# plt.show()
-
-# 条形组合条形图
-# ax = fig.add_axes((0.1, 0.1, 0.8, 0.8))
-# langs = ['C', 'C++', 'Python', 'Java']
-# print(len(langs))
-# len = np.arange(len(langs))
-# print(len)
-# data = [[22, 33, 44, 55],
-#         [23, 34, 45, 56]]
-# ax.bar(len, data[0], 0.05, align='center',color='r')  # 数据只能一组一组的传，不能一次性传多维数组
-# # 平移只能用数字，因此要将字符串列表转换为数字，然后再用label转换回去
-# ax.bar(len+0.05, data[1], 0.05, align='center',color='b')  # 数据只能一组一组的传，不能一次性传多维数组
-# ax.set_xticks(len)  # 设置刻度线
-# ax.set_xticklabels(langs)  # 设置刻度标签
-# plt.show()
-
-# 垂直堆叠条形图 表示彼此顶部的不同组的条形图 条形图的高度显示组的组合结果
-# ax = fig.add_axes((0.1, 0.1, 0.8, 0.8))
-# N = 5
-# ind = np.arange(1, N+1)
-# menNum = [20,30,40,50,60]
-# womenNum = [25,35,45,55,65]
-# ax.bar(ind, womenNum, color='blue')
-# ax.bar(ind, menNum, color='red', bottom=womenNum)  # 这个数据在上一个数据上面堆叠上去
-# ax.set_xticks(ind)
-# ax.set_xticklabels(['C','D','E','F','G'])
-# ax.legend(["women", "men"], loc="upper left")
-# plt.show()
-
-# 水平条形图 ax.barh(y,height=0.8,width,bottom=None,align='center',color)
-# y 条形的y坐标的标量序列
-# height 标量或标量序列表示条的宽度
-# width 标量或类似数组，可选
-# bottom 标量或类似数组 y轴最小值 可选
-# align center/edge 可选
-# color 颜色
-# ax = fig.add_axes((0.1, 0.1, 0.8, 0.8))
-# langs = ['C', 'C++', 'Python', 'Java']
-# student = [22, 33, 44, 55]
-# ax.barh(langs, student,0.5, align='center',color='r')
-# plt.show()
-
 ax = fig.add_axes((0.1, 0.1, 0.8, 0.8))
-langs = ['C', 'C++', 'Python', 'Java']
-print(len(langs))
-len = np.arange(len(langs))
-print(len)
-data = [[22, 33, 44, 55],
-        [23, 34, 45, 56]]
-ax.barh(len, data[0], 0.2, align='center',color='r')  # 数据只能一组一组的传，不能一次性传多维数组
-# 平移只能用数字，因此要将字符串列表转换为数字，然后再用label转换回去
-ax.barh(len+0.2, data[1], 0.2, align='center',color='b')  # 数据只能一组一组的传，不能一次性传多维数组
-ax.set_yticks(len)  # 设置刻度线
-ax.set_yticklabels(langs)  # 设置刻度标签
-plt.show()
+data = np.random.randn(1000)
 
+# 绘制直方图
+ax.hist(data, bins=20, color='skyblue', alpha=0.8)  # bins除了写个数，还能自己写范围，用列表表示
+ax.hist(data, bins=[-4, -3, -2, -1, 0, 1, 2, 3, 4], color='skyblue', alpha=0.8, density=True)  # bins除了写个数，还能自己写范围，用列表表示
+ax.set_title('Histogram of data')
+
+# 设置图表属性
+ax.set_xlabel('Value')
+ax.set_ylabel('Frequency')
+
+# 显示图表
+plt.show()
