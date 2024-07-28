@@ -301,7 +301,7 @@ arr[..., 1:3]  # 取所有行，取1:3列
 # print('调用 broadcast_to 函数之后：')
 # print(np.broadcast_to(a, (4, 4)))
 
-# expand_dims(arr,axis=None) 通过在指定位置插入新的轴来扩展数组形状,插入轴其实就是增加维度，shape对应的位置(深度，高度，宽度)
+# expand_dims(arr,axis=None) 通过在指定位置插入新的轴来扩展数组形状,插入轴其实就是增加维度，shape对应的位置(深度，高度，宽度) 维度 行 列
 # import numpy as np
 #
 # x = np.array(([1, 2], [3, 4]))
