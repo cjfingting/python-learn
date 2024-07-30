@@ -40,8 +40,28 @@ import matplotlib.pyplot as plt
 arr = np.array([[[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]],
                 [[13, 14, 15], [16, 17, 18], [19, 20, 21], [22, 23, 24]],
                 [[24, 25, 26], [27, 28, 29], [30, 31, 32], [33, 34, 35]]])
-print(arr[::, ::-1, ::])  # 横行进行交换，即进行图片左右交换  高 宽 色
+# print(arr[::, ::-1, ::])  # 横行进行交换，即进行图片左右交换  高 宽 色
+# data = mpimg.imread('ganyu.jpg')
+# data = data[::-1, ::,::]   # 图片上下交换
+# data = data[::, ::-1, ::]  # 图片左右交换
+# plt.imshow(data)
+# plt.show()
+
+# 图片打码
 data = mpimg.imread('ganyu.jpg')
-data = data[::, ::-1, ::]  #
+data_temp = data[250:1570,1500:2500]  # 裁剪图片
+data_temp = data_temp[::20,::20]  # 隔20个拿一个像素点，相当于马赛克
+for i in range(66):
+    for j in range(50):   # 将取出的像素点一个个替换
+        data[250+20*i:250+20+i*20,1500+20*j:1500+20+20*j] = data_temp[i][j]
 plt.imshow(data)
 plt.show()
+
+# 图片拼接
+data1 = mpimg.imread('ganyu.jpg')
+data2 = np.concatenate([data1,data1],axis=0)  # 列拼接
+data2 = np.concatenate([data1,data1],axis=1)  # 行拼接
+
+# 图片切割
+data = mpimg.imread('ganyu.jpg')
+data1,data2,data3 = np.split(data,indices_or_sections=[300,500],axis=1) # 300之前一个，300-500一个，500之后一个
